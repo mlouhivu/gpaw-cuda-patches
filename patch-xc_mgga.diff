@@ -1,0 +1,12 @@
+diff --git a/c/xc/xc_mgga.c b/c/xc/xc_mgga.c
+index 2abdb9f59..2e3b01f46 100644
+--- a/c/xc/xc_mgga.c
++++ b/c/xc/xc_mgga.c
+@@ -2,6 +2,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <assert.h>
++#include <xc_config.h>
+ #include "xc_mgga.h"
+ #include "xc_gpaw.h"
+ 

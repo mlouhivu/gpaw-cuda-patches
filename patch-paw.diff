@@ -1,0 +1,38 @@
+diff --git a/gpaw/paw.py b/gpaw/paw.py
+index 934364fe1..e1b2c2168 100644
+--- a/gpaw/paw.py
++++ b/gpaw/paw.py
+@@ -179,7 +179,8 @@ class PAW(PAWTextOutput):
+                 self.wfs.set_eigensolver(None)
+ 
+             if key == 'cuda':
+-                self.cuda=cuda
++                self.cuda=kwargs['cuda']
++                continue
+             
+             if key in ['fixmom', 'mixer',
+                        'verbose', 'txt', 'hund', 'random',
+@@ -349,21 +350,9 @@ class PAW(PAWTextOutput):
+             world = mpi.world.new_communicator(np.asarray(world))
+ 
+         if self.cuda:
++            print "Note: only RMM-DIIS and FD have been implemented in CUDA"
+             self.timer.start('Cuda')
+-            if par.eigensolver != None and par.eigensolver != 'rmm-diis':
+-                print "Cuda disabled: Eigensolver: '", par.eigensolver,"' not implemented."
+-                self.hamiltonian = None
+-                if self.wfs:
+-                    self.wfs.set_cuda(False)
+-                self.cuda = False
+-            elif par.mode != 'fd':
+-                print "Cuda disabled: Mode: '",par.mode,"' not implemented."
+-                self.hamiltonian = None
+-                if self.wfs:
+-                    self.wfs.set_cuda(False)
+-                self.cuda = False
+-            else:
+-                gpaw.cuda.init(mpi.rank)
++            gpaw.cuda.init(mpi.rank)
+             self.timer.stop('Cuda')
+ 
+         self.wfs.world = world

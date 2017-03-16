@@ -1,0 +1,12 @@
+diff --git a/c/xc/xc_gpaw.h b/c/xc/xc_gpaw.h
+index c0e05dcbe..487b11669 100644
+--- a/c/xc/xc_gpaw.h
++++ b/c/xc/xc_gpaw.h
+@@ -4,6 +4,7 @@
+ 
+ #ifndef _XC_GPAW_H
+ #define _XC_GPAW_H
++#include <xc_config.h>
+ 
+ /*
+ BETA = 0.066725
